@@ -1,0 +1,23 @@
+.menu-button{
+    float: right;
+    display: block;
+    position: relative; 
+    background-color: #5DBCD2;
+}
+
+.toolbar{
+    width: 100%;
+    display: block;
+    background-color: #333333;
+    color: white;
+    border-radius: 0.5em;
+}
+
+.logo{
+    float: left;
+    width: 4em;
+}
+
+.title{
+    font-size: 1em;
+}

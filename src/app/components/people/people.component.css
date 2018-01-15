@@ -1,0 +1,10 @@
+/* .but-container {
+    margin:auto;
+    display: block;
+} */
+
+.but{
+    display: block;
+    width: 80%;
+    margin: 1em auto 1em auto;
+}

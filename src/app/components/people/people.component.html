@@ -1,0 +1,33 @@
+<mat-card class="card">
+    <mat-card-title >
+      <h3>Agregar personas</h3>
+
+      
+    </mat-card-title>
+
+    <mat-card-content>
+        <form class="form" [formGroup]="personForm"  (ngSubmit)="createPerson(personForm.value)">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nombre"  formControlName="name" >
+            </mat-form-field>
+          
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Email" formControlName="email"  >
+              <!-- <mat-error >{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field  class="full-width">
+             
+              <input matInput  [matDatepicker]="picker"  placeholder="Escoge el cumpleaños" formControlName="birthday"  >
+              <mat-datepicker-toggle matSuffix [for]="picker">
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          <div class="but-container">
+
+            <button mat-raised-button  class="but"  type="submit"  >Crear persona</button>
+          </div>
+        </form>
+        <button mat-raised-button color="warn"   class="but"  (click)="reset()">Reset</button>
+    </mat-card-content>
+</mat-card>

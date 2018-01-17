@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamsService } from '../../services/teams/teams.service';
 import { Team } from '../../models/team';
 import { PeopleService } from '../../services/people/people.service';
+import { DataService } from '../../services/data/data.service';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -15,12 +17,17 @@ export class PeopleComponent implements OnInit {
   
   private creatingTeam: boolean
   
-  teams: Array<Team>;
+  teams: Observable<Team>;
 
   personForm: FormGroup;
   teamForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public teamsService: TeamsService, public peopleService: PeopleService) { 
+  constructor(
+    private fb: FormBuilder, 
+    public teamsService: TeamsService, 
+    public peopleService: PeopleService,
+    public dataService: DataService
+  ) { 
     this.creatingTeam = false;
 
 
@@ -34,11 +41,23 @@ export class PeopleComponent implements OnInit {
       name: [null, Validators.required],
     });
 
-    this.teams = this.teamsService.getTeams();
   }
-
+  
   ngOnInit() {
-    
+    this.getTeams()
+
+    this.dataService.teamsSubject.subscribe((broadcast) => {
+      if(broadcast){
+        this.getTeams();
+      }
+    })
+  }
+  getTeams(){
+    this.teams = this.teamsService.getTeams()
+    this.teams.subscribe((t)=> {
+
+      console.log("TEAMS VISTA", t);
+    });
   }
 
   resetPersonForm(){
@@ -50,9 +69,11 @@ export class PeopleComponent implements OnInit {
   }
   createPerson(formValue){
     this.peopleService.createPerson(formValue);
+    this.resetPersonForm();
   }
   createTeam(formValue){
     this.teamsService.createTeam(formValue);
+    this.resetTeamForm();
   }
 
   enableCreateTeam(){

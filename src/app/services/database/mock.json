@@ -1,0 +1,22 @@
+{
+  "team": [
+    {
+      "_id": "1",
+      "name": "Microsoft"
+    },
+    {
+      "_id": "2",
+      "name": "CoreOS"
+    },
+    {
+      "_id": "3",
+      "name": "Copa"
+    }
+  ],
+  "person": [
+    {
+      "_id": "1",
+      "name": "yo test"
+    }
+  ]
+}

@@ -18,6 +18,8 @@ import { TeamsService } from './services/teams/teams.service';
 import { DatabaseService } from './services/database/database.service';
 import { BirthdaysService } from './services/birthdays/birthdays.service';
 import { PeopleService } from './services/people/people.service';
+import { ErrorService } from './services/error/error.service';
+import { DataService } from './services/data/data.service';
 
 
 @NgModule({
@@ -37,7 +39,7 @@ import { PeopleService } from './services/people/people.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RouterService, TeamsService, DatabaseService, BirthdaysService, PeopleService],
+  providers: [RouterService, TeamsService, DatabaseService, BirthdaysService, PeopleService, ErrorService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

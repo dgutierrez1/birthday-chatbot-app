@@ -6,4 +6,10 @@ export class Team{
     members?: Array<Person>;
     _id?: string;
 
+    constructor(name: string, members?, _id?){
+        this.name = name;
+        this.members = members;
+        this._id = _id;
+    }
+
 }

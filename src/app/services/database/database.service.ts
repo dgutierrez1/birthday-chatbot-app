@@ -2,101 +2,50 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Person } from '../../models/person';
 import { Team } from '../../models/team';
+import { mock } from './mock.persistence';
+import { DataService } from '../data/data.service';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DatabaseService {
 
-  serverUrl: string
-  constructor(private http: HttpClient) { 
-    this.serverUrl = "http://172.28.200.57:3000";
+  serverUrl: string;
+  mockTesting = true;
+  constructor(private http: HttpClient, public dataService: DataService) { 
+    if(this.mockTesting){
+      this.serverUrl = "http://localhost:3000";
+    }else{
+      this.serverUrl = "http://172.28.200.57:3000";
+    }
+    
   }
 
-
-  postNewPerson(person: Person){
-    let postUrl = this.serverUrl + "person/create";
-
-    this.http.post( postUrl, person)
-      .subscribe((res) => {
-        alert(res)
-        console.log(res);
-      });
+  postNewPerson(person: Person): Observable<any>{
+    let postUrl = this.serverUrl + "/person";
+    return this.http.post( postUrl, person);
+    
   }
 
-  postNewTeam(team: Team){
-    let postUrl = this.serverUrl + "team/create";
-
-    this.http.post( postUrl, team)
-      .subscribe((res) => {
-        alert(res)
-        console.log(res);
-      });
+  postNewTeam(team: Team): Observable<any>{
+    let postUrl = this.serverUrl + "/team";
+    return this.http.post( postUrl, {
+      data: team
+    })
   }
 
-  getTeams(): Array<Team>{
-    // let getUrl = this.serverUrl + "team/list";
-    // let teams: Array<Team>;
-    // this.http.get( getUrl)
-    //   .subscribe((res: Array<Team>) => {
-    //     alert(res)
-    //     console.log(res);
-    //     if(res){
-    //       teams = res;
-    //     } else{
-    //       alert('No se han encontrado datos');
-    //     }
-    //   });
-    // return teams;  
-
-    return [
-      {
-        name: 'Microsoft',
-        _id: '1'
-      },
-      {
-        name: 'Deloitte',
-        _id: '2'
-      },
-      {
-        name: 'Copa',
-        _id: '3'
-      }
-      ,{
-        name: 'CoreOS',
-        _id: '4'
-      }
-    ]
+  getTeams(): Observable<any>{
+    let getUrl = this.serverUrl + "/team";
+    return this.http.get( getUrl);
   }
 
-  getPersons(): Array<Person>{
-    let getUrl = this.serverUrl + "person/list";
-    let persons: Array<Person>;
-    this.http.get( getUrl)
-      .subscribe((res: Array<Person>) => {
-        alert(res)
-        console.log(res);
-        if(res){
-          persons = res;
-        } else{
-          alert('No se han encontrado datos');
-        }
-      });
-    return persons;  
+  getPersons(): Observable<any>{
+    let getUrl = this.serverUrl + "/person";
+    return this.http.get( getUrl);
   }
 
-  getMessagesByPerson(personId: string): Array<string>{
-    let getUrl = this.serverUrl + "messages/person";
-    let messages: Array<string>;
-    this.http.post( getUrl, personId)
-      .subscribe((res: Array<string>) => {
-        alert(res)
-        console.log(res);
-        if(res){
-          messages = res;
-        } else{
-          alert('No se han encontrado datos');
-        }
-      });
-    return messages;  
+  getMessagesByPerson(personId: string): Observable<any>{
+    let getUrl = this.serverUrl + "/messages/person";
+    return this.http.post( getUrl, personId);
   }
 
 }

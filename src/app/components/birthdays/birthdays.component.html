@@ -1,3 +1,27 @@
-<p>
-  birthdays works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <panel panelTitle="Lista de personas">
+          <mat-chip-list>
+            <div class="row" *ngFor="let person of people" (click)="selectPerson(person)"> 
+              <div class="col-10">
+                <mat-chip>{{person.name}}</mat-chip>
+              </div>
+              <div class="col-2">
+                <mat-chip>{{person.status}}</mat-chip>
+              </div>
+
+            </div>
+            
+            
+          </mat-chip-list>
+      
+      </panel>
+    </div>
+    <div class="col" *ngIf="selecterPerson">
+      <panel panelTitle="Mensajes de {{selecterPerson.name}}">
+        
+      </panel>
+    </div>
+  </div>
+</div>

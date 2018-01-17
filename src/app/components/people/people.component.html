@@ -26,8 +26,8 @@
                 <div class="col">
                   <mat-form-field class="full-width">
                     <mat-select   placeholder="Selecciona el equipo de trabajo" formControlName="team" >
-                      <mat-option *ngFor="let team of teams" [value]="team" >
-                        {{ team.name }}
+                      <mat-option *ngFor="let team of teams | async" [value]="team" >
+                        {{ team.nameTeam }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>

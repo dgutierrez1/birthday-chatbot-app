@@ -13,6 +13,11 @@ import { RouterService } from './services/router/router.service';
 import { DateAdapter } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PanelComponent } from './components/panel/panel.component';
+import { TeamsService } from './services/teams/teams.service';
+import { DatabaseService } from './services/database/database.service';
+import { BirthdaysService } from './services/birthdays/birthdays.service';
+import { PeopleService } from './services/people/people.service';
 
 
 @NgModule({
@@ -21,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     PeopleComponent,
     TeamsComponent,
-    BirthdaysComponent
+    BirthdaysComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [RouterService],
+  providers: [RouterService, TeamsService, DatabaseService, BirthdaysService, PeopleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

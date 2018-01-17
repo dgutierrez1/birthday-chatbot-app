@@ -1,10 +1,12 @@
-/* .but-container {
+.but-container {
     margin:auto;
     display: block;
-} */
+    padding-bottom: 1.2em;
+    position: relative;
+}
 
 .but{
     display: block;
     width: 80%;
-    margin: 1em auto 1em auto;
+    margin: auto;
 }

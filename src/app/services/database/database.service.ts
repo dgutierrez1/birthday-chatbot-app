@@ -33,19 +33,38 @@ export class DatabaseService {
   }
 
   getTeams(): Array<Team>{
-    let getUrl = this.serverUrl + "team/list";
-    let teams: Array<Team>;
-    this.http.get( getUrl)
-      .subscribe((res: Array<Team>) => {
-        alert(res)
-        console.log(res);
-        if(res){
-          teams = res;
-        } else{
-          alert('No se han encontrado datos');
-        }
-      });
-    return teams;  
+    // let getUrl = this.serverUrl + "team/list";
+    // let teams: Array<Team>;
+    // this.http.get( getUrl)
+    //   .subscribe((res: Array<Team>) => {
+    //     alert(res)
+    //     console.log(res);
+    //     if(res){
+    //       teams = res;
+    //     } else{
+    //       alert('No se han encontrado datos');
+    //     }
+    //   });
+    // return teams;  
+
+    return [
+      {
+        name: 'Microsoft',
+        _id: '1'
+      },
+      {
+        name: 'Deloitte',
+        _id: '2'
+      },
+      {
+        name: 'Copa',
+        _id: '3'
+      }
+      ,{
+        name: 'CoreOS',
+        _id: '4'
+      }
+    ]
   }
 
   getPersons(): Array<Person>{

@@ -1,19 +1,17 @@
-<mat-card class="card">
-    <mat-card-title >
-      <h3>Agregar personas</h3>
+<div class="container">
+  <div class="row">
+    <div class="col">
 
-      
-    </mat-card-title>
+    
+      <panel panelTitle="Agregar nueva persona">
 
-    <mat-card-content>
         <form class="form" [formGroup]="personForm"  (ngSubmit)="createPerson(personForm.value)">
             <mat-form-field class="full-width">
-              <input matInput placeholder="Nombre"  formControlName="name" >
+              <input matInput placeholder="Nombre"  formControlName="name" type="text" >
             </mat-form-field>
           
             <mat-form-field class="full-width">
               <input matInput placeholder="Email" formControlName="email"  >
-              <!-- <mat-error >{{getErrorMessage()}}</mat-error> -->
             </mat-form-field>
 
             <mat-form-field  class="full-width">
@@ -23,11 +21,55 @@
               </mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
+
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <mat-select   placeholder="Selecciona el equipo de trabajo" formControlName="team" >
+                      <mat-option *ngFor="let team of teams" [value]="team" >
+                        {{ team.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-auto">
+                  <button mat-raised-button style="margin-bottom: 1em;" class="partial-margin" [disabled]="creatingTeam" (click)="enableCreateTeam()">Crear nuevo equipo</button>
+                </div>
+              </div>
+            
+              
+
+            <div class="but-container">
+              <button mat-raised-button  class="but" [disabled]="!personForm.valid" type="submit"  >Crear persona</button>
+            </div>
+        </form>
+        <div class="but-container">
+          <button mat-raised-button color="warn"   class="but"  (click)="reset()">Reset</button>
+        </div>
+      </panel>
+    </div>
+    <div class="col" *ngIf="creatingTeam">
+      <panel panelTitle="Agregar nuevo grupo de trabajo">
+        <form class="form" [formGroup]="teamForm"  (ngSubmit)="createTeam(teamForm.value)">
+          
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre" formControlName="name" type="text" >
+          </mat-form-field>
           <div class="but-container">
 
-            <button mat-raised-button  class="but"  type="submit"  >Crear persona</button>
+            <button mat-raised-button  class="but" [disabled]="!teamForm.valid" type="submit"   >Crear grupo de trabajo</button>
           </div>
+
         </form>
-        <button mat-raised-button color="warn"   class="but"  (click)="reset()">Reset</button>
-    </mat-card-content>
-</mat-card>
+        <div class="but-container">
+
+          <button mat-raised-button color="warn"   class="but"  (click)="resetTeamForm()">Reset</button>
+        </div>
+        <div class="but-container">
+
+          <button mat-raised-button color="warn"   class="but"  (click)="disableCreateTeam()">Cancelar</button>
+        </div>
+        </panel>
+      </div>
+    </div>
+</div>

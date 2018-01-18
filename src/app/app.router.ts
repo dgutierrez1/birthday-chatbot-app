@@ -11,7 +11,6 @@ import { TeamsComponent } from './components/teams/teams.component';
 export const router: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'teams', component: TeamsComponent },
     { path: 'people', component: PeopleComponent },
     { path: 'birthdays', component: BirthdaysComponent},
 ];

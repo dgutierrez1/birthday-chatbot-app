@@ -28,4 +28,12 @@ export class TeamsService {
     }
   }
 
+  modifyTeam(team: Team){
+    this.db.modifyTeam(team).subscribe(res => console.log("MODIFY TEAM RES", res));
+  }
+
+  deleteTeam(teamId: string){
+    this.db.deleteTeam(teamId).subscribe(res => console.log("DELETE TEAM RES",res));
+  }
+
 }

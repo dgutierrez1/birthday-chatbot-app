@@ -17,12 +17,26 @@ export class PeopleService {
     );
     
     if(newPerson){
-      this.db.postNewPerson(newPerson);
+      this.db.postNewPerson(newPerson).subscribe(obj => console.log(obj));
+
     }
   }
 
   getPeople(): Observable<Person>{
     return this.db.getPersons();
+  }
+
+  getPeopleBirthday(): Observable<any>{
+    const peopleBirthdayList = this.db.getPersonBirthday();
+    peopleBirthdayList.subscribe(res => console.log("PEOPLE BIRTHDAY LISTA RES", res) );
+    return peopleBirthdayList;
+  }
+
+  modifyPerson(person: Person){
+    this.db.modifyPerson(person).subscribe(res => console.log("MODIFY PERSON RESP", res));
+  }
+  deletePerson(personId: string){
+    this.db.deletePerson(personId).subscribe(res => console.log("DELETE PERSON RESP",res));
   }
 
 

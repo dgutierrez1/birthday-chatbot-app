@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class DatabaseService {
 
   serverUrl: string;
-  mockTesting = true;
+  mockTesting = false;
   constructor(private http: HttpClient) {
     if (this.mockTesting) {
       this.serverUrl = 'http://localhost:3000';
@@ -42,13 +42,36 @@ export class DatabaseService {
   }
 
   getPersonBirthday(): Observable<any> {
-    const getUrl = this.serverUrl + '/person_birthday';
+    const getUrl = this.serverUrl + '/listMessages';
     return this.http.get(getUrl);
   }
 
   getMessagesByPerson(personId: string): Observable<any>{
-    let getUrl = this.serverUrl + "/messages/person";
-    return this.http.post( getUrl, personId);
+    let getUrl = this.serverUrl + "/message";
+    return this.http.get( getUrl, {
+      params:  {
+        _id: personId
+      }
+    });
   }
+
+  modifyPerson(person: Person){
+    let putUrl = this.serverUrl + "/person";
+    return this.http.put(putUrl, person);
+  }
+  deletePerson(personId: string){
+    let deleteUrl = this.serverUrl + "/person/"+personId;
+    return this.http.delete(deleteUrl);
+  }
+
+  modifyTeam(team: Team){
+    let putUrl = this.serverUrl + "/team";
+    return this.http.put(putUrl, team);
+  }
+  deleteTeam(teamId: string){
+    let deleteUrl = this.serverUrl + "/team/"+teamId;
+    return this.http.delete(deleteUrl);
+  }
+
 
 }

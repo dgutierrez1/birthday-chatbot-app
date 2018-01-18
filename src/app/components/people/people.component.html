@@ -1,10 +1,72 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <panel panelTile="Lista personas" *ngIf="people">
+          <div class="table-responsive">
 
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th >
+                      <h4>
+                         Nombre
+                      </h4>
+                    </th>
+                    <th >
+                        <h4>Cumpleaños</h4>
+                      </th>
+                      <th>
+                        <h4>Equipo de trabajo</h4>
+                      </th>
+                      <th>
+                        <h4>Email</h4>
+                      </th>
+                      <th></th>
+                      <th></th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let person of people | async">
+                    
+                    <td>
+                      <mat-chip-list>
+                        <mat-chip>{{person.name}}</mat-chip>
+                      </mat-chip-list>
+                    </td>
+                    <td >
+                      <mat-chip-list>
+                        <mat-chip>{{person.birthdate}}</mat-chip>
+                      </mat-chip-list>
+                    </td>
+  
+                    <td >
+                      <mat-chip-list>
+                        <mat-chip>{{person.team.name}}</mat-chip>
+                      </mat-chip-list>
+                    </td>
+                    <td >
+                      <mat-chip-list>
+                        <mat-chip>{{person.email}}</mat-chip>
+                      </mat-chip-list>
+                    </td>
+                    <td>
+                      <button mat-button (click)="personForModificationSelected(person)"> Modificar</button>
+                    </td>
+                    <td>
+                      <button mat-button (click)="deletePerson(person)"> Borrar</button>
+                    </td>
+                    
+                  </tr>
+                </tbody>  
+              </table>
+
+            </div>
+            <button mat-button (click)="hidePeopleList()">Esconder lista de personas</button>
+      </panel>
     
-      <panel panelTitle="Agregar nueva persona">
-
+      <panel panelTitle="Agregar nueva persona"   [hidden]="people">
+        <button mat-button (click)="showPeopleList()"> <u> Ver lista de personas</u></button>
         <form class="form" [formGroup]="personForm"  (ngSubmit)="createPerson(personForm.value)">
             <mat-form-field class="full-width">
               <input matInput placeholder="Nombre"  formControlName="name" type="text" >
@@ -16,7 +78,7 @@
 
             <mat-form-field  class="full-width">
              
-              <input matInput  [matDatepicker]="picker"  placeholder="Escoge el cumpleaños" formControlName="birthday"  >
+              <input matInput  [matDatepicker]="picker"  placeholder="Escoge el cumpleaños" formControlName="birthday"  #datePicker>
               <mat-datepicker-toggle matSuffix [for]="picker">
               </mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
@@ -44,7 +106,16 @@
             </div>
         </form>
         <div class="but-container">
-          <button mat-raised-button color="warn"   class="but"  (click)="reset()">Reset</button>
+          <button mat-raised-button color="warn"   class="but"  (click)="resetPersonForm()">Reset</button>
+        </div>
+        <div *ngIf="modifyingPerson">
+
+          <div class="but-container">
+            <button mat-raised-button color="warn"  class="but"  (click)="modifyPerson()">Modificar persona</button>
+          </div>
+          <div class="but-container">
+              <button mat-raised-button color="warn"  class="but"  (click)="cancelPersonModification()">Cancelar</button>
+            </div>
         </div>
       </panel>
     </div>

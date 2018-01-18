@@ -24,7 +24,69 @@
   "person": [
     {
       "_id": "1",
-      "name": "yo test"
+      "name": "usuario prueba",
+      "team": {
+        "name": "Avianca"
+      },
+      "birthdate":"birthday",
+      "email":"a@a.com"
+    },
+    {
+      "_id": "2",
+      "name": "Daniel",
+      "team": {
+        "name": "CoreOS"
+      },
+      "birthdate":"birthday",
+      "email":"1@1.com"
+    }
+  ],
+  "messages-person":[
+    {
+      "id":"1",
+      "recipient_id":"2",
+      "messages": [
+        {
+          "text": "Feliz cumpleaños 1",
+          "sender_id":"1"
+        },
+        {
+          "text": "Feliz cumpleaños 2",
+          "sender_id":"2"
+        },
+        {
+          "text": "Feliz cumpleaños 3",
+          "sender_id":"1"
+        }
+      ]
+    },
+    {
+      "id":"2",
+      "sender_id":"2",
+      "recipient_id":"1",
+      "messages": [
+        {
+          "text": "Feliz cumpleaños 4"
+        },
+        {
+          "text": "Feliz cumpleaños 5"
+        },
+        {
+          "text": "Feliz cumpleaños 6"
+        }
+      ]
+    }
+  ],
+  "person-birthday": [
+    {
+      "_id": "1",
+      "name": "usuario prueba",
+      "birthday_status": "active"
+    },
+    {
+      "_id": "2",
+      "name": "Daniel",
+      "birthday_status": "inactive"
     }
   ]
 }

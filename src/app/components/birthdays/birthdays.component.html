@@ -2,26 +2,53 @@
   <div class="row">
     <div class="col">
       <panel panelTitle="Lista de personas">
-          <mat-chip-list>
-            <div class="row" *ngFor="let person of people" (click)="selectPerson(person)"> 
-              <div class="col-10">
-                <mat-chip>{{person.name}}</mat-chip>
-              </div>
-              <div class="col-2">
-                <mat-chip>{{person.status}}</mat-chip>
-              </div>
+        <div class="table-responsive">
 
-            </div>
-            
-            
-          </mat-chip-list>
-      
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th >
+                  <h4>
+                    <b>
+                      Nombre
+                    </b>
+                  </h4>
+                </th>
+                <th >
+                  <h4>Se enviaron mensajes de cumpleaños</h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let person of people | async" (click)="personWasSelected(person)">
+                
+                  <td >
+                    <mat-chip-list>
+                      <mat-chip>{{person.name}}</mat-chip>
+                    </mat-chip-list>
+                  </td>
+                  <td style="width:30%;">
+                    <mat-chip-list>
+                      <mat-chip>{{person.printed}}</mat-chip>
+                    </mat-chip-list>
+                  </td>
+                
+              </tr>
+            </tbody>  
+          </table>
+        </div>
       </panel>
     </div>
-    <div class="col" *ngIf="selecterPerson">
-      <panel panelTitle="Mensajes de {{selecterPerson.name}}">
-        
+
+    <div class="col" *ngIf="messagesSelectedPerson">
+      <panel panelTitle="Mensajes de {{selectedPerson.name}}">
+        <div  >
+          <p  *ngFor="let msg of messagesSelectedPerson">
+            {{msg.message}}
+          </p>
+        </div>
       </panel>
     </div>
+
   </div>
 </div>

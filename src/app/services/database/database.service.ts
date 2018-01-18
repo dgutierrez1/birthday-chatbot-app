@@ -11,36 +11,39 @@ export class DatabaseService {
 
   serverUrl: string;
   mockTesting = true;
-  constructor(private http: HttpClient, public dataService: DataService) { 
-    if(this.mockTesting){
-      this.serverUrl = "http://localhost:3000";
-    }else{
-      this.serverUrl = "http://172.28.200.57:3000";
+  constructor(private http: HttpClient) {
+    if (this.mockTesting) {
+      this.serverUrl = 'http://localhost:3000';
+    } else {
+      this.serverUrl = 'http://172.28.200.57:3000';
     }
-    
   }
 
-  postNewPerson(person: Person): Observable<any>{
-    let postUrl = this.serverUrl + "/person";
+  postNewPerson(person: Person): Observable<any> {
+    const postUrl = this.serverUrl + '/person';
     return this.http.post( postUrl, person);
-    
   }
 
-  postNewTeam(team: Team): Observable<any>{
-    let postUrl = this.serverUrl + "/team";
-    return this.http.post( postUrl, {
-      data: team
-    })
+  postNewTeam(team: Team): Observable<any> {
+    const postUrl = this.serverUrl + '/team';
+    const finalTeam = JSON.stringify(team);
+    console.log('NEW TEAM', team);
+    return this.http.post( postUrl, team);
   }
 
-  getTeams(): Observable<any>{
-    let getUrl = this.serverUrl + "/team";
+  getTeams(): Observable<any> {
+    const getUrl = this.serverUrl + '/team';
     return this.http.get( getUrl);
   }
 
   getPersons(): Observable<any>{
     let getUrl = this.serverUrl + "/person";
     return this.http.get( getUrl);
+  }
+
+  getPersonBirthday(): Observable<any> {
+    const getUrl = this.serverUrl + '/person_birthday';
+    return this.http.get(getUrl);
   }
 
   getMessagesByPerson(personId: string): Observable<any>{

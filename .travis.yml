@@ -44,6 +44,7 @@ branches:
 
 before_script:
   - npm install -g @angular/cli
+  - npm update
 cache:
   directories:
     - "node_modules"

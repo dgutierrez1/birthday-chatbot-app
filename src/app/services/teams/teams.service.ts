@@ -11,7 +11,7 @@ export class TeamsService {
   constructor(public dataService: DataService, private http: HttpClient) { }
 
   public getTeams(): Observable<any> {
-    const getUrl = environment.serverUrl + '/team';
+    const getUrl = environment.serverUrl + '/teams';
     return this.http.get(getUrl);
   }
   createTeam(teamData) {
@@ -19,7 +19,7 @@ export class TeamsService {
       name: teamData.name,
     };
 
-    const postUrl = environment.serverUrl + '/team';
+    const postUrl = environment.serverUrl + '/teams';
     this.http.post(postUrl, newTeam).subscribe(
       (res) => {
         alert(res);
@@ -32,17 +32,13 @@ export class TeamsService {
   }
 
   modifyTeam(team: Team) {
-    const putUrl = environment.serverUrl + '/team';
+    const putUrl = environment.serverUrl + '/teams';
     this.http.put(putUrl, team).subscribe(res => console.log('MODIFY TEAM RES', res));
   }
 
   deleteTeam(teamId: string) {
-    const deleteUrl = environment.serverUrl + '/team/';
-    this.http.delete(deleteUrl, {
-      params: {
-        _id: teamId
-      }
-    }).subscribe(res => console.log('DELETE TEAM RES', res));
+    const deleteUrl = `${environment.serverUrl}/teams/${teamId}`;
+    this.http.delete(deleteUrl).subscribe(res => console.log('DELETE TEAM RES', res));
   }
 
 }

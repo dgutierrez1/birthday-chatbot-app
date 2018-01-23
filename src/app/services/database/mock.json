@@ -1,5 +1,5 @@
 {
-  "team": [
+  "teams": [
     {
       "_id": "1",
       "name": "Microsoft"
@@ -13,23 +13,23 @@
       "name": "Copa"
     },
     {
-      "name": "asdf",
-      "id": "1"
+      "name": "Tests",
+      "_id": "NEge147"
     },
     {
-      "name": "1234",
-      "id": "llyKeXW"
+      "name": "Test 2",
+      "_id": "hnk4HO5"
     }
   ],
-  "person": [
+  "persons": [
     {
       "_id": "1",
       "name": "usuario prueba",
       "team": {
         "name": "Avianca"
       },
-      "birthdate":"birthday",
-      "email":"a@a.com"
+      "birthdate": "birthday",
+      "email": "a@a.com"
     },
     {
       "_id": "2",
@@ -37,33 +37,32 @@
       "team": {
         "name": "CoreOS"
       },
-      "birthdate":"birthday",
-      "email":"1@1.com"
+      "birthdate": "birthday",
+      "email": "1@1.com"
     }
   ],
-  "messages-person":[
+  "messages": [
     {
-      "id":"1",
-      "recipient_id":"2",
+      "_id": "1",
+      "personId": "2",
       "messages": [
         {
           "text": "Feliz cumpleaños 1",
-          "sender_id":"1"
+          "sender_id": "1"
         },
         {
           "text": "Feliz cumpleaños 2",
-          "sender_id":"2"
+          "sender_id": "2"
         },
         {
           "text": "Feliz cumpleaños 3",
-          "sender_id":"1"
+          "sender_id": "1"
         }
       ]
     },
     {
-      "id":"2",
-      "sender_id":"2",
-      "recipient_id":"1",
+      "_id": "2",
+      "personId": "1",
       "messages": [
         {
           "text": "Feliz cumpleaños 4"
@@ -77,16 +76,20 @@
       ]
     }
   ],
-  "person-birthday": [
+  "birthdays": [
     {
       "_id": "1",
       "name": "usuario prueba",
-      "birthday_status": "active"
+      "personId": "1",
+      "printed": "inactive",
+      "year": 2000
     },
     {
       "_id": "2",
       "name": "Daniel",
-      "birthday_status": "inactive"
+      "personId": "2",
+      "printed": "active",
+      "year": 2018
     }
   ]
 }

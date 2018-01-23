@@ -19,33 +19,22 @@ export class PeopleService {
       personData.team._id,
     );
 
-    const postUrl = environment.serverUrl + '/person';
+    const postUrl = environment.serverUrl + '/persons';
     this.http.post(postUrl, newPerson).subscribe(obj => console.log(obj));
 
   }
 
   getPeople(): Observable < any > {
-    const getUrl = environment.serverUrl + '/person';
+    const getUrl = environment.serverUrl + '/persons';
     return this.http.get(getUrl);
   }
 
-  getPeopleBirthday(): Observable < any > {
-    const getUrl = environment.serverUrl + '/listMessages';
-    const peopleBirthdayList = this.http.get(getUrl);
-    peopleBirthdayList.subscribe(res => console.log('PEOPLE BIRTHDAY LISTA RES', res));
-    return peopleBirthdayList;
-  }
-
   modifyPerson(person: Person) {
-    const putUrl = environment.serverUrl + '/person';
+    const putUrl = environment.serverUrl + '/persons';
     this.http.put(putUrl, person).subscribe(res => console.log('MODIFY PERSON RESP', res));
   }
   deletePerson(personId: string) {
-    const deleteUrl = environment.serverUrl + '/person/';
-    this.http.delete(deleteUrl, {
-      params: {
-        _id: personId
-      }
-    }).subscribe(res => console.log('DELETE PERSON RESP', res));
+    const deleteUrl = `${environment.serverUrl}/persons/${personId}`;
+    this.http.delete(deleteUrl).subscribe(res => console.log('DELETE PERSON RESP', res));
   }
 }

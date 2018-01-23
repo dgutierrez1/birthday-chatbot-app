@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleService } from '../../services/people/people.service';
 import { BirthdaysService } from '../../services/birthdays/birthdays.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-birthdays',
@@ -10,8 +11,8 @@ import { BirthdaysService } from '../../services/birthdays/birthdays.service';
 export class BirthdaysComponent implements OnInit {
 
   private selectedPerson;
-  people;
-  private messagesSelectedPerson;
+  birthdays: Observable<any>;
+  private messagesSelectedPerson: Observable<any>;
 
 
   constructor(public peopleService: PeopleService, public birthdayService: BirthdaysService) { }
@@ -20,15 +21,12 @@ export class BirthdaysComponent implements OnInit {
     this.getPeople();
   }
   getPeople() {
-    this.people = this.peopleService.getPeopleBirthday();
+    this.birthdays = this.birthdayService.getBirthdays();
   }
 
   personWasSelected(selectedPerson) {
     this.selectedPerson = selectedPerson;
-    this.birthdayService.getBirthdayMessagesByListId(selectedPerson._id).subscribe(
-      (msgs) => {
-        this.messagesSelectedPerson = msgs;
-      });
+    this.messagesSelectedPerson = this.birthdayService.getBirthdayMessagesByListId(selectedPerson._id);
   }
 
 }

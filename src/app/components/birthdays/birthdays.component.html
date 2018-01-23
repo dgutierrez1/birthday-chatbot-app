@@ -20,16 +20,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let person of people | async" (click)="personWasSelected(person)">
+              <tr *ngFor="let birthday of birthdays | async" (click)="personWasSelected(birthday)">
                 
                   <td >
                     <mat-chip-list>
-                      <mat-chip>{{person.name}}</mat-chip>
+                      <mat-chip>{{birthday.name}}</mat-chip>
                     </mat-chip-list>
                   </td>
                   <td style="width:30%;">
                     <mat-chip-list>
-                      <mat-chip>{{person.printed}}</mat-chip>
+                      <mat-chip>{{birthday.printed}}</mat-chip>
                     </mat-chip-list>
                   </td>
                 
@@ -43,8 +43,8 @@
     <div class="col" *ngIf="messagesSelectedPerson">
       <app-panel panelTitle="Mensajes de {{selectedPerson.name}}">
         <div  >
-          <p  *ngFor="let msg of messagesSelectedPerson">
-            {{msg.message}}
+          <p  *ngFor="let msg of (messagesSelectedPerson|async)?.messages">
+            {{msg.text}}
           </p>
         </div>
       </app-panel>

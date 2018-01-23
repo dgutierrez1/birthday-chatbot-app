@@ -14,26 +14,27 @@ export class TeamsService {
   }
   createTeam(teamData) {
     const newTeam: Team = {
-      name: teamData.name
+      name: teamData.name,
     };
 
-    if (newTeam) {
-      this.db.postNewTeam(newTeam).subscribe(
-        (res) => {
-          alert(res);
-          this.dataService.refreshTeamView();
-      }, (err) => {
+
+    this.db.postNewTeam(newTeam).subscribe(
+      (res) => {
+        alert(res);
+        this.dataService.refreshTeamView();
+      },
+      (err) => {
         console.log(err);
       });
-    }
+
   }
 
-  modifyTeam(team: Team){
-    this.db.modifyTeam(team).subscribe(res => console.log("MODIFY TEAM RES", res));
+  modifyTeam(team: Team) {
+    this.db.modifyTeam(team).subscribe(res => console.log('MODIFY TEAM RES', res));
   }
 
-  deleteTeam(teamId: string){
-    this.db.deleteTeam(teamId).subscribe(res => console.log("DELETE TEAM RES",res));
+  deleteTeam(teamId: string) {
+    this.db.deleteTeam(teamId).subscribe(res => console.log('DELETE TEAM RES', res));
   }
 
 }

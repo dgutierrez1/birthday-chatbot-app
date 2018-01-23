@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <panel panelTitle="Lista de personas">
+      <app-panel panelTitle="Lista de personas">
         <div class="table-responsive">
 
           <table class="table table-hover">
@@ -37,17 +37,17 @@
             </tbody>  
           </table>
         </div>
-      </panel>
+      </app-panel>
     </div>
 
     <div class="col" *ngIf="messagesSelectedPerson">
-      <panel panelTitle="Mensajes de {{selectedPerson.name}}">
+      <app-panel panelTitle="Mensajes de {{selectedPerson.name}}">
         <div  >
           <p  *ngFor="let msg of messagesSelectedPerson">
             {{msg.message}}
           </p>
         </div>
-      </panel>
+      </app-panel>
     </div>
 
   </div>

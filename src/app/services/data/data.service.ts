@@ -8,9 +8,9 @@ export class DataService {
 
   constructor() {
     this.teamsSubject = new Subject();
-   }
+  }
 
-  refreshTeamView(){
+  refreshTeamView() {
     this.teamsSubject.next(true);
   }
 

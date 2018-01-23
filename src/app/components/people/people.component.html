@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <panel panelTile="Lista personas" *ngIf="people">
+      <app-panel panelTile="Lista personas" *ngIf="people">
           <div class="table-responsive">
 
               <table class="table table-hover">
@@ -63,9 +63,9 @@
 
             </div>
             <button mat-button (click)="hidePeopleList()">Esconder lista de personas</button>
-      </panel>
+      </app-panel>
     
-      <panel panelTitle="Agregar nueva persona"   [hidden]="people">
+      <app-panel panelTitle="Agregar nueva persona"   [hidden]="people">
         <button mat-button (click)="showPeopleList()"> <u> Ver lista de personas</u></button>
         <form class="form" [formGroup]="personForm"  (ngSubmit)="createPerson(personForm.value)">
             <mat-form-field class="full-width">
@@ -117,10 +117,10 @@
               <button mat-raised-button color="warn"  class="but"  (click)="cancelPersonModification()">Cancelar</button>
             </div>
         </div>
-      </panel>
+      </app-panel>
     </div>
     <div class="col" *ngIf="creatingTeam">
-      <panel panelTitle="Agregar nuevo grupo de trabajo">
+      <app-panel panelTitle="Agregar nuevo grupo de trabajo">
         <form class="form" [formGroup]="teamForm"  (ngSubmit)="createTeam(teamForm.value)">
           
           <mat-form-field class="full-width">
@@ -140,7 +140,7 @@
 
           <button mat-raised-button color="warn"   class="but"  (click)="disableCreateTeam()">Cancelar</button>
         </div>
-        </panel>
+        </app-panel>
       </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -29,7 +29,7 @@ import { DataService } from './services/data/data.service';
     PeopleComponent,
     TeamsComponent,
     BirthdaysComponent,
-    PanelComponent
+    PanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +37,9 @@ import { DataService } from './services/data/data.service';
     routes,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [RouterService, TeamsService, DatabaseService, BirthdaysService, PeopleService, ErrorService, DataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -5,7 +5,7 @@ import { DatabaseService } from './database.service';
 describe('DatabaseService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DatabaseService]
+      providers: [DatabaseService],
     });
   });
 

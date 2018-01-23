@@ -5,7 +5,7 @@ import { BirthdaysService } from '../../services/birthdays/birthdays.service';
 @Component({
   selector: 'app-birthdays',
   templateUrl: './birthdays.component.html',
-  styleUrls: ['./birthdays.component.css']
+  styleUrls: ['./birthdays.component.css'],
 })
 export class BirthdaysComponent implements OnInit {
 
@@ -19,13 +19,16 @@ export class BirthdaysComponent implements OnInit {
   ngOnInit() {
     this.getPeople();
   }
-  getPeople(){
+  getPeople() {
     this.people = this.peopleService.getPeopleBirthday();
   }
 
-  personWasSelected(selectedPerson){
+  personWasSelected(selectedPerson) {
     this.selectedPerson = selectedPerson;
-    this.birthdayService.getBirthdayMessagesByListId(selectedPerson._id).subscribe((msgs)=> this.messagesSelectedPerson = msgs);
+    this.birthdayService.getBirthdayMessagesByListId(selectedPerson._id).subscribe(
+      (msgs) => {
+        this.messagesSelectedPerson = msgs;
+      });
   }
 
 }

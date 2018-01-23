@@ -12,7 +12,7 @@ export const router: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'people', component: PeopleComponent },
-    { path: 'birthdays', component: BirthdaysComponent},
+    { path: 'birthdays', component: BirthdaysComponent },
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

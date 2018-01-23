@@ -7,9 +7,9 @@ export class BirthdaysService {
 
   constructor(public databaseService: DatabaseService) { }
 
-  getBirthdayMessagesByListId(listId: string): Observable<any>{
+  getBirthdayMessagesByListId(listId: string): Observable<any> {
     const personBirthdayMessages = this.databaseService.getMessagesByPerson(listId);
-    personBirthdayMessages.subscribe(obj => console.log("MESSAGES FROM PERSON OBS",obj));
+    personBirthdayMessages.subscribe(obj => console.log('MESSAGES FROM PERSON OBS', obj));
     return personBirthdayMessages;
   }
 

@@ -6,7 +6,7 @@ export class RouterService {
 
   constructor(public router: Router) { }
 
-  navigateTo(route: string){
+  navigateTo(route: string) {
     this.router.navigate([route]);
   }
 

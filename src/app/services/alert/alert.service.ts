@@ -5,7 +5,7 @@ export class AlertService {
 
   constructor() { }
 
-  async displayAlert(){
-    
+  async displayAlert() {
+
   }
 }

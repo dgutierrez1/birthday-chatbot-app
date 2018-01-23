@@ -1,31 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamsService } from '../../services/teams/teams.service';
 import { Team } from '../../models/team';
 import { PeopleService } from '../../services/people/people.service';
 import { DataService } from '../../services/data/data.service';
 import { Observable } from 'rxjs/Observable';
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
 import { Person } from '../../models/person';
 
 
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
-  styleUrls: ['./people.component.css']
+  styleUrls: ['./people.component.css'],
 })
 export class PeopleComponent implements OnInit {
 
-  
-  private creatingTeam: boolean
-  
+
+  private creatingTeam: boolean;
+
   personBeingModified;
 
   modifyingPerson: boolean;
 
   teams: Observable<Team>;
-  people: Observable<Person>
+  people: Observable<Person>;
 
   personForm: FormGroup;
   teamForm: FormGroup;
@@ -34,108 +32,108 @@ export class PeopleComponent implements OnInit {
   teamSelect;
 
   constructor(
-    private fb: FormBuilder, 
-    public teamsService: TeamsService, 
+    private fb: FormBuilder,
+    public teamsService: TeamsService,
     public peopleService: PeopleService,
     public dataService: DataService,
-  ) { 
+  ) {
 
 
     this.personForm = this.fb.group({
       name: [null, Validators.required],
       email: [null, Validators.compose([Validators.required, Validators.email])],
-      birthday: [ Validators.required],
-      team: [ Validators.required]
-    })
+      birthday: [Validators.required],
+      team: [Validators.required],
+    });
     this.teamForm = this.fb.group({
       name: [null, Validators.required],
     });
 
   }
-  
+
   ngOnInit() {
     this.creatingTeam = false;
     this.modifyingPerson = false;
 
-    this.getTeams()
+    this.getTeams();
     this.dataService.teamsSubject.subscribe((broadcast) => {
-      if(broadcast){
+      if (broadcast) {
         this.getTeams();
       }
-    })
+    });
   }
-  getTeams(){
-    this.teams = this.teamsService.getTeams()
-    this.teams.subscribe((t)=> {
+  getTeams() {
+    this.teams = this.teamsService.getTeams();
+    this.teams.subscribe((t) => {
 
-      console.log("TEAMS VISTA", t);
+      console.log('TEAMS VISTA', t);
     });
 
   }
 
-  resetPersonForm(){
+  resetPersonForm() {
     this.personForm.reset();
   }
 
-  resetTeamForm(){
+  resetTeamForm() {
     this.teamForm.reset();
   }
-  createPerson(formValue){
+  createPerson(formValue) {
     this.peopleService.createPerson(formValue);
     this.resetPersonForm();
   }
-  createTeam(formValue){
+  createTeam(formValue) {
     this.teamsService.createTeam(formValue);
     this.resetTeamForm();
   }
 
-  enableCreateTeam(){
+  enableCreateTeam() {
     this.creatingTeam = true;
   }
-  disableCreateTeam(){
+  disableCreateTeam() {
     this.creatingTeam = false;
   }
 
-  cancelPersonModification(){
+  cancelPersonModification() {
     this.modifyingPerson = false;
     this.personForm.reset();
   }
-  modifyPerson(person){
-    
+  modifyPerson(person) {
+
     this.peopleService.modifyPerson(person);
   }
-  deletePerson(person){
+  deletePerson(person) {
     this.peopleService.deletePerson(person._id);
   }
 
-  modifyTeam(team){
+  modifyTeam(team) {
     this.teamsService.modifyTeam(team);
   }
 
-  deleteTeam(team){
+  deleteTeam(team) {
     this.teamsService.deleteTeam(team._id);
   }
 
-  personForModificationSelected(person: Person){
+  personForModificationSelected(person: Person) {
     this.people = undefined;
     this.modifyingPerson = true;
     this.personBeingModified = person;
-    
+
     this.personForm.setValue({
       name: person.name,
       email: person.email,
       team: person.team,
-      birthday: person.birthdate
+      birthday: person.birthdate,
     });
 
     this.datePicker.nativeElement.value = person.birthdate;
-    console.log(this.personForm.get("birthday").value);
+    console.log(this.personForm.get('birthday').value);
 
   }
-  showPeopleList(){
+  showPeopleList() {
     this.people = this.peopleService.getPeople();
   }
-  hidePeopleList(){
+  hidePeopleList() {
     this.people = undefined;
   }
 }

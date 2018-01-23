@@ -21,24 +21,24 @@ export class DatabaseService {
 
   postNewPerson(person: Person): Observable<any> {
     const postUrl = this.serverUrl + '/person';
-    return this.http.post( postUrl, person);
+    return this.http.post(postUrl, person);
   }
 
   postNewTeam(team: Team): Observable<any> {
     const postUrl = this.serverUrl + '/team';
     const finalTeam = JSON.stringify(team);
     console.log('NEW TEAM', team);
-    return this.http.post( postUrl, team);
+    return this.http.post(postUrl, team);
   }
 
   getTeams(): Observable<any> {
     const getUrl = this.serverUrl + '/team';
-    return this.http.get( getUrl);
+    return this.http.get(getUrl);
   }
 
-  getPersons(): Observable<any>{
-    let getUrl = this.serverUrl + "/person";
-    return this.http.get( getUrl);
+  getPersons(): Observable<any> {
+    const getUrl = this.serverUrl + '/person';
+    return this.http.get(getUrl);
   }
 
   getPersonBirthday(): Observable<any> {
@@ -46,30 +46,30 @@ export class DatabaseService {
     return this.http.get(getUrl);
   }
 
-  getMessagesByPerson(personId: string): Observable<any>{
-    let getUrl = this.serverUrl + "/message";
-    return this.http.get( getUrl, {
+  getMessagesByPerson(personId: string): Observable<any> {
+    const getUrl = this.serverUrl + '/message';
+    return this.http.get(getUrl, {
       params:  {
-        _id: personId
-      }
+        _id: personId,
+      },
     });
   }
 
-  modifyPerson(person: Person){
-    let putUrl = this.serverUrl + "/person";
+  modifyPerson(person: Person) {
+    const putUrl = this.serverUrl + '/person';
     return this.http.put(putUrl, person);
   }
-  deletePerson(personId: string){
-    let deleteUrl = this.serverUrl + "/person/"+personId;
+  deletePerson(personId: string) {
+    const deleteUrl = this.serverUrl + '/person/' + personId;
     return this.http.delete(deleteUrl);
   }
 
-  modifyTeam(team: Team){
-    let putUrl = this.serverUrl + "/team";
+  modifyTeam(team: Team) {
+    const putUrl = this.serverUrl + '/team';
     return this.http.put(putUrl, team);
   }
-  deleteTeam(teamId: string){
-    let deleteUrl = this.serverUrl + "/team/"+teamId;
+  deleteTeam(teamId: string) {
+    const deleteUrl = this.serverUrl + '/team/' + teamId;
     return this.http.delete(deleteUrl);
   }
 

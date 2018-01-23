@@ -10,7 +10,7 @@ export class BirthdaysService {
 
   getBirthdayMessagesByListId(listId: string): Observable<any> {
     const getUrl =  `${environment.serverUrl}/messages/${listId}`;
-    const personBirthdayMessages = this.http.get(getUrl)
+    const personBirthdayMessages = this.http.get(getUrl);
     personBirthdayMessages.subscribe(obj => console.log('MESSAGES FROM PERSON OBS', obj));
     return personBirthdayMessages;
   }

@@ -1,24 +1,26 @@
 import { DataService } from '../data/data.service';
 import { Injectable } from '@angular/core';
-import { DatabaseService } from '../database/database.service';
 import { Team } from '../../models/team';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../../environments/environment.prod';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class TeamsService {
 
-  constructor(public db: DatabaseService, public dataService: DataService) { }
+  constructor(public dataService: DataService, private http: HttpClient) { }
 
-  public getTeams(): Observable<Team> {
-    return this.db.getTeams();
+  public getTeams(): Observable<any> {
+    const getUrl = environment.serverUrl + '/team';
+    return this.http.get(getUrl);
   }
   createTeam(teamData) {
     const newTeam: Team = {
       name: teamData.name,
     };
 
-
-    this.db.postNewTeam(newTeam).subscribe(
+    const postUrl = environment.serverUrl + '/team';
+    this.http.post(postUrl, newTeam).subscribe(
       (res) => {
         alert(res);
         this.dataService.refreshTeamView();
@@ -30,11 +32,17 @@ export class TeamsService {
   }
 
   modifyTeam(team: Team) {
-    this.db.modifyTeam(team).subscribe(res => console.log('MODIFY TEAM RES', res));
+    const putUrl = environment.serverUrl + '/team';
+    this.http.put(putUrl, team).subscribe(res => console.log('MODIFY TEAM RES', res));
   }
 
   deleteTeam(teamId: string) {
-    this.db.deleteTeam(teamId).subscribe(res => console.log('DELETE TEAM RES', res));
+    const deleteUrl = environment.serverUrl + '/team/';
+    this.http.delete(deleteUrl, {
+      params: {
+        _id: teamId
+      }
+    }).subscribe(res => console.log('DELETE TEAM RES', res));
   }
 
 }

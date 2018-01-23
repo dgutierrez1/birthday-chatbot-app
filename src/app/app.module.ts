@@ -15,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PanelComponent } from './components/panel/panel.component';
 import { TeamsService } from './services/teams/teams.service';
-import { DatabaseService } from './services/database/database.service';
 import { BirthdaysService } from './services/birthdays/birthdays.service';
 import { PeopleService } from './services/people/people.service';
 import { ErrorService } from './services/error/error.service';
@@ -39,7 +38,7 @@ import { DataService } from './services/data/data.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [RouterService, TeamsService, DatabaseService, BirthdaysService, PeopleService, ErrorService, DataService],
+  providers: [RouterService, TeamsService, BirthdaysService, PeopleService, ErrorService, DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

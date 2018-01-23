@@ -49,4 +49,4 @@ cache:
     - "node_modules"
 
 script:
-   - ng build --prod
+   - npm run build

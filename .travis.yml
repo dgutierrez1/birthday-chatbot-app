@@ -46,7 +46,7 @@ before_script:
   - npm install -g @angular/cli
   - npm install -g @angular-devkit/core
   - npm update
-  - npm run start-mock
+  - npm run start-mock &
 cache:
   directories:
     - "node_modules"

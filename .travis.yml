@@ -41,7 +41,7 @@ node_js:
 
 branches:
    only:
-      - master
+    - master
 before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
@@ -51,8 +51,8 @@ before_install:
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
 before_script:
-  - npm install -g @angular/cli
-  - npm install -g @angular-devkit/core
+  # - npm install -g @angular/cli
+  # - npm install -g @angular-devkit/core
   - npm update
   #- npm run start-mock &
 apt:

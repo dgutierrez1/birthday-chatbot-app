@@ -10,7 +10,7 @@
       <button mat-button [matMenuTriggerFor]="menu" class="menu-button" mat-icon-button>
           <mat-icon>dehaze</mat-icon>
       </button>
-      <mat-menu #menu="matMenu" xPosition="after">
+      <mat-menu #menu xPosition="after">
         <button mat-menu-item (click)="routerService.navigateTo('home')">Home</button>
         <button mat-menu-item (click)="routerService.navigateTo('people')">People</button>
         <button mat-menu-item (click)="routerService.navigateTo('birthdays')">Birthdays</button>

@@ -16,3 +16,4 @@ export const router: Routes = [
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
+export const plainRoutes: any = router;

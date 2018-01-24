@@ -6,10 +6,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "test": "ng test",
+    "test": "npm run start-mock && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start-mock": "json-server --watch src/app/services/database/mock.json --id _id"
+    "start-mock": "json-server --watch src/app/services/database/mock.json --id _id",
+    "dev": "npm start && npm run start-mock"
+
+    
   },
   "private": true,
   "dependencies": {

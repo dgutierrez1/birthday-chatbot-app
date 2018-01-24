@@ -19,6 +19,7 @@ import { BirthdaysService } from './services/birthdays/birthdays.service';
 import { PeopleService } from './services/people/people.service';
 import { ErrorService } from './services/error/error.service';
 import { DataService } from './services/data/data.service';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 @NgModule({
@@ -37,6 +38,10 @@ import { DataService } from './services/data/data.service';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ],
   providers: [RouterService, TeamsService, BirthdaysService, PeopleService, ErrorService, DataService],
   bootstrap: [AppComponent],

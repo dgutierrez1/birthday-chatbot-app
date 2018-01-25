@@ -8,8 +8,8 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
       require('karma-phantomjs-launcher'),
+      require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
@@ -28,16 +28,27 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'PhantomJS'],
+    browsers: ['Chrome', 'PhantomJS', 'PhantomJS_custom'],
     singleRun: false,
     customLaunchers: {
-      PhantomJS_travis_ci: {
+      'PhantomJS_custom': {
         base: 'PhantomJS',
-        // flags: ['--no-sandbox']
+        options: {
+          windowName: 'my-window',
+          settings: {
+            webSecurityEnabled: false
+          },
+        },
+        flags: ['--load-images=true'],
+        debug: true
       }
-   },
+    },
+    // phantomjsLauncher: {
+    // // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
+    //   exitOnResourceError: true
+    // }
   });
   if(process.env.TRAVIS){
-    config.browsers = ['PhantomJS_travis_ci'];
+    config.browsers = ['PhantomJS_custom'];
   }
 };

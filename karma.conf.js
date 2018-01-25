@@ -28,7 +28,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'PhantomJS', 'PhantomJS_custom'],
+    browsers: ['Chrome', 'PhantomJS_custom'],
     singleRun: false,
     customLaunchers: {
       'PhantomJS_custom': {
@@ -43,12 +43,8 @@ module.exports = function (config) {
         debug: true
       }
     },
-    // phantomjsLauncher: {
-    // // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
-    //   exitOnResourceError: true
-    // }
+
   });
-  console.log("PROCESS ENV",process.env);
   
   if(process.env.TRAVIS){
     config.browsers = ['PhantomJS_custom'];

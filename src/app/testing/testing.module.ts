@@ -24,10 +24,10 @@ export const TestingModule = {
     RouterTestingModule.withRoutes(plainRoutes),
     HttpClientModule
   ],
-  exports: [
-    TeamsService,
-    PeopleService
-  ],
+  // exports: [
+  //   TeamsService,
+  //   PeopleService
+  // ],
   declarations: [ 
     AppComponent,
     HomeComponent,

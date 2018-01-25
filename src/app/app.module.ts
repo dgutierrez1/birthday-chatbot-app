@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PeopleComponent } from './components/people/people.component';
-import { TeamsComponent } from './components/teams/teams.component';
 import { BirthdaysComponent } from './components/birthdays/birthdays.component';
 import { routes } from './app.router';
 import { MaterialModule } from './material.module';
@@ -27,7 +26,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
     AppComponent,
     HomeComponent,
     PeopleComponent,
-    TeamsComponent,
     BirthdaysComponent,
     PanelComponent,
   ],

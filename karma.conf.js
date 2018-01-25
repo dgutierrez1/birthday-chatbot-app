@@ -48,7 +48,10 @@ module.exports = function (config) {
     //   exitOnResourceError: true
     // }
   });
+  console.log("PROCESS ENV",process.env);
+  
   if(process.env.TRAVIS){
     config.browsers = ['PhantomJS_custom'];
   }
+  // else if(process.env)
 };

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { BirthdaysComponent } from './components/birthdays/birthdays.component';
 import { PeopleComponent } from './components/people/people.component';
-import { TeamsComponent } from './components/teams/teams.component';
 
 
 export const router: Routes = [

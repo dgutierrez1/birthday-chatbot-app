@@ -56,6 +56,6 @@ module.exports = function (config) {
   });
   
   if(process.env.TRAVIS){
-    config.browsers = ['PhantomJS_custom', 'ChromeHeadless'];
+    config.browsers = ['PhantomJS_custom'];
   }
 };

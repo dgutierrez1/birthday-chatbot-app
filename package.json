@@ -5,10 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod --env=prod",
     "test": "ng test --env=test",
-    "test-no-watch": "ng test --single-run=true --watch=false",
-    "test-no-watch-phantom": "ng test --single-run=true  --browser PhantomJS  --watch=false",
+    "test-no-watch": "ng test --env=test --single-run=true --watch=false",
+    "test-no-watch-phantom": "ng test --env=test --single-run=true  --browser PhantomJS  --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start-mock": "json-server --watch src/app/services/database/mock.json --id _id",

@@ -31,11 +31,13 @@ module.exports = function (config) {
     browsers: ['Chrome', 'PhantomJS'],
     singleRun: false,
     customLaunchers: {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
+      PhantomJS_travis_ci: {
+        base: 'PhantomJS',
+        // flags: ['--no-sandbox']
       }
    },
   });
-
+  if(process.env.TRAVIS){
+    config.browsers = ['PhantomJS_travis_ci'];
+  }
 };

@@ -44,6 +44,7 @@
   "messages": [
     {
       "_id": "1",
+      "listmessageId":"1",
       "personId": "2",
       "messages": [
         {
@@ -62,6 +63,7 @@
     },
     {
       "_id": "2",
+      "listmessageId":"2",
       "personId": "1",
       "messages": [
         {
@@ -76,7 +78,7 @@
       ]
     }
   ],
-  "birthdays": [
+  "listmessages": [
     {
       "_id": "1",
       "name": "usuario prueba",

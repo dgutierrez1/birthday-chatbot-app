@@ -9,14 +9,14 @@ export class BirthdaysService {
   constructor(private http: HttpClient) { }
 
   getBirthdayMessagesByListId(listId: string): Observable<any> {
-    const getUrl =  `${environment.serverUrl}/messages/${listId}`;
+    const getUrl =  `${environment.serverUrl}/listmessages/${listId}/messages`;
     const personBirthdayMessages = this.http.get(getUrl);
     personBirthdayMessages.subscribe(obj => console.log('MESSAGES FROM PERSON OBS', obj));
     return personBirthdayMessages;
   }
 
   getBirthdays(): Observable < any > {
-    const getUrl = environment.serverUrl + '/birthdays';
+    const getUrl = environment.serverUrl + '/listmessages';
     const peopleBirthdayList = this.http.get(getUrl);
     peopleBirthdayList.subscribe(res => console.log('BIRTHDAY LISTA RES', res));
     return peopleBirthdayList;

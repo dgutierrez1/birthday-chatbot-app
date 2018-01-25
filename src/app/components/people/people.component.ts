@@ -99,7 +99,6 @@ export class PeopleComponent implements OnInit {
     this.personForm.reset();
   }
   modifyPerson(person) {
-
     this.peopleService.modifyPerson(person);
   }
   deletePerson(person) {
@@ -122,7 +121,7 @@ export class PeopleComponent implements OnInit {
     this.personForm.setValue({
       name: person.name,
       email: person.email,
-      team: person.team,
+      teamId: person.team.id,
       birthday: person.birthdate,
     });
 

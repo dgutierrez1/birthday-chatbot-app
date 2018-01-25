@@ -16,7 +16,8 @@ export class PeopleService {
       personData.email,
       personData.name,
       personData.birthday,
-      personData.team._id,
+      personData.team.id,
+      personData.team.name
     );
 
     const postUrl = environment.serverUrl + '/persons';

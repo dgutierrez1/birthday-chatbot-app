@@ -3,9 +3,9 @@ export class Person {
   email: string;
   name: string;
   birthdate: string;
-  team:{
-    id: string,
-    name: string
+  team: {
+    _id: string,
+    name: string,
   };
 
 
@@ -13,8 +13,12 @@ export class Person {
     this.email = email;
     this.name = name;
     this.birthdate = birthdate;
-    this.team.id = teamId;
-    this.team.name = teamName;
+    this.team = {
+      _id:teamId,
+      name: teamName
+    }
+    
   }
 
 }
+

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
@@ -14,7 +14,6 @@ import {
 } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 
@@ -42,7 +41,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA
+    NO_ERRORS_SCHEMA,
   ],
   declarations: [],
 })

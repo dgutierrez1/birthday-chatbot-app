@@ -28,7 +28,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'PhantomJS_custom'],
+    browsers: ['Chrome', 'PhantomJS_custom','ChromeHeadless' ],
     singleRun: false,
     customLaunchers: {
       'PhantomJS_custom': {
@@ -41,6 +41,15 @@ module.exports = function (config) {
         },
         flags: ['--load-images=true'],
         debug: true
+      },
+      'ChromeHeadless': {
+        base: 'Chrome',
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          // Without a remote debugging port, Google Chrome exits immediately.
+          '--remote-debugging-port=9222',
+        ],
       }
     },
 
@@ -49,5 +58,4 @@ module.exports = function (config) {
   if(process.env.TRAVIS){
     config.browsers = ['PhantomJS_custom'];
   }
-  // else if(process.env)
 };

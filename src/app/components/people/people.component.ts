@@ -39,19 +39,21 @@ export class PeopleComponent implements OnInit {
   ) {
 
 
-    this.personForm = this.fb.group({
-      name: [null, Validators.required],
-      email: [null, Validators.compose([Validators.required, Validators.email])],
-      birthday: [Validators.required],
-      team: [Validators.required],
-    });
-    this.teamForm = this.fb.group({
-      name: [null, Validators.required],
-    });
 
   }
 
   ngOnInit() {
+
+    this.personForm = this.generateFormGroup({
+      name: [null, Validators.required],
+      email: [null, Validators.compose([Validators.required, Validators.email])],
+      birthday: [Validators.required],
+      team: [Validators.required],
+    })
+    this.teamForm = this.generateFormGroup({
+      name: [null, Validators.required],
+    });
+
     this.creatingTeam = false;
     this.modifyingPerson = false;
 
@@ -65,10 +67,12 @@ export class PeopleComponent implements OnInit {
   getTeams() {
     this.teams = this.teamsService.getTeams();
     this.teams.subscribe((t) => {
-
       console.log('TEAMS VISTA', t);
     });
 
+  }
+  generateFormGroup(formControls):FormGroup{
+    return this.fb.group(formControls);
   }
 
   resetPersonForm() {
@@ -121,7 +125,7 @@ export class PeopleComponent implements OnInit {
     this.personForm.setValue({
       name: person.name,
       email: person.email,
-      teamId: person.team.id,
+      teamId: person.team._id,
       birthday: person.birthdate,
     });
 
@@ -131,6 +135,7 @@ export class PeopleComponent implements OnInit {
   }
   showPeopleList() {
     this.people = this.peopleService.getPeople();
+    this.people.subscribe(ppl=> {console.log("PEOPLE RES",ppl)});
   }
   hidePeopleList() {
     this.people = undefined;

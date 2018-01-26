@@ -43,8 +43,8 @@
     <div class="col" *ngIf="messagesSelectedPerson">
       <app-panel panelTitle="Mensajes de {{selectedPerson.name}}">
         <div  >
-          <p  *ngFor="let msg of (messagesSelectedPerson|async)?.messages">
-            {{msg.text}}
+          <p  *ngFor="let msg of (messagesSelectedPerson|async)">
+            {{msg.message}}
           </p>
         </div>
       </app-panel>

@@ -22,7 +22,6 @@
                         <h4>Email</h4>
                       </th>
                       <th></th>
-                      <th></th>
 
                   </tr>
                 </thead>
@@ -50,9 +49,7 @@
                         <mat-chip>{{person.email}}</mat-chip>
                       </mat-chip-list>
                     </td>
-                    <td>
-                      <button mat-button (click)="personForModificationSelected(person)"> Modificar</button>
-                    </td>
+
                     <td>
                       <button mat-button (click)="deletePerson(person)"> Borrar</button>
                     </td>
@@ -87,7 +84,7 @@
               <div class="row">
                 <div class="col">
                   <mat-form-field class="full-width">
-                    <mat-select   placeholder="Selecciona el equipo de trabajo" formControlName="team" >
+                    <mat-select  #teamsSelect placeholder="Selecciona el equipo de trabajo" formControlName="team" >
                       <mat-option *ngFor="let team of teams | async" [value]="team" >
                         {{ team.name }}
                       </mat-option>

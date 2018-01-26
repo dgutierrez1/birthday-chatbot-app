@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA  } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PeopleComponent } from './components/people/people.component';
@@ -18,7 +17,6 @@ import { BirthdaysService } from './services/birthdays/birthdays.service';
 import { PeopleService } from './services/people/people.service';
 import { ErrorService } from './services/error/error.service';
 import { DataService } from './services/data/data.service';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 @NgModule({
@@ -39,7 +37,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA
+    NO_ERRORS_SCHEMA,
   ],
   providers: [RouterService, TeamsService, BirthdaysService, PeopleService, ErrorService, DataService],
   bootstrap: [AppComponent],

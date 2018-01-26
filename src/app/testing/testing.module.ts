@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamsService } from '../services/teams/teams.service';
 import { BirthdaysService } from '../services/birthdays/birthdays.service';
@@ -6,7 +6,6 @@ import { PeopleService } from '../services/people/people.service';
 import { ErrorService } from '../services/error/error.service';
 import { DataService } from '../services/data/data.service';
 import { AppComponent } from '../app.component';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterService } from '../services/router/router.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { plainRoutes } from '../app.router';
@@ -22,32 +21,32 @@ export const TestingModule = {
   imports: [
     CommonModule,
     RouterTestingModule.withRoutes(plainRoutes),
-    HttpClientModule
+    HttpClientModule,
   ],
   // exports: [
   //   TeamsService,
   //   PeopleService
   // ],
-  declarations: [ 
+  declarations: [
     AppComponent,
     HomeComponent,
     PanelComponent,
     BirthdaysComponent,
-    PeopleComponent
+    PeopleComponent,
   ],
   providers: [
-    RouterService, 
-    TeamsService, 
+    RouterService,
+    TeamsService,
     BirthdaysService,
     PeopleService,
-    ErrorService, 
+    ErrorService,
     DataService,
     FormBuilder,
-    HttpClient
+    HttpClient,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA
+    NO_ERRORS_SCHEMA,
   ],
 
-}
+};
